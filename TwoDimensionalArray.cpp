@@ -12,24 +12,25 @@ int main()
 
     int sum = 0;
 
+    struct tm buf;
+    time_t t = time(NULL);
+    localtime_s(&buf, &t);
+    buf.tm_mday;
+    int index = buf.tm_mday % size;
+
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
         {
             array[i][j] = i + j;
             cout << " " << array[i][j];
-            
-            struct tm buf;
-            time_t t = time(NULL);
-            localtime_s(&buf, &t);
-            buf.tm_mday;
-            /*size_t col = 0;
-            if (buf.tm_mday % size == col);
-            {
-                sum += i;
-            }*/
         }
-        cout << endl; //<< sum << endl;
+        cout << endl;
     }
+    for (int j = 0; j < size; j++)
+    {
+        sum = array[index][j];
+    }
+    cout << "On " << buf.tm_mday << " we have " << sum << endl;
 }
 
